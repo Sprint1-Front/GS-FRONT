@@ -5,6 +5,7 @@ import App from './App.tsx';
 import Error from './routes/Error/index.tsx';
 import './global.css'
 import Home from './routes/Home/index.tsx';
+import Integrantes from './routes/Integrantes/index.tsx';
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { path: "/", element: <Home /> },
+      { path: "/integrantes", element: <Integrantes /> },
     ],
   },
 ]);
