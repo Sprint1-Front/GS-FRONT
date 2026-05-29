@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@theme light {
+@theme dark {
   --color-primary: #eff1f5;
   --color-secondary: #7287fd;
   --color-background: #1e66f5;
@@ -10,13 +10,6 @@
 
 }
 
-@theme dark {
-    
-    --color-primary: #1e66f5;
-    --color-secondary: #7287fd;
-    --color-background: #eff1f5;
-    --color-text: #4c4f69;
-    --color-subtext: #5c5f77;
-    --color-accent: #179299;
+@theme light {
     
 }

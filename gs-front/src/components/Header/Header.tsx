@@ -5,7 +5,7 @@ export default function Header() {
     <header className="bg-primary text-text p-4 flex justify-between items-center font">
       <h1>THALASSOR</h1>
       <nav>
-        <Link to="/home">Sobre Nós</Link> | <Link to="/about">Sobre</Link> |{" "}
+        <Link to="/home">Sobre Nós</Link> | <Link to="/sobre">Sobre</Link> |{" "}
         <Link to="/contact">Contato</Link> | <Link to="/blog">Blog</Link> |{" "}
         <Link to="/login">Login</Link> |{" "} | <Link to="/register">Registrar</Link>{" "}
         <Link to="/profile">Perfil</Link>
