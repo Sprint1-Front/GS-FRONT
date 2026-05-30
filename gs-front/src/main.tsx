@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter,RouterProvider } from "react-router-dom";
 import App from './App.tsx';
 import Error from './routes/Error/index.tsx';
-import './global.css'
+import './styles/global.css';
 import Home from './routes/Home/index.tsx';
 import Integrantes from './routes/Integrantes/index.tsx';
 import Sobre from './routes/Sobre/index.tsx';

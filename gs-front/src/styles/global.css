@@ -27,7 +27,7 @@
   --color-urchin: #c25878;
 }
 
-@theme dark {
+.dark {
   --color-base: #0d1f2d;
   --color-mantle: #0a1820;
   --color-crust: #071318;
@@ -51,4 +51,9 @@
   --color-abyss: #b4e0f0;
   --color-kelp: #68c890;
   --color-urchin: #e888a8;
+}
+
+@theme {
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "Outfit", sans-serif;
 }
