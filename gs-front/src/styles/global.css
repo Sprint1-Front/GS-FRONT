@@ -1,0 +1,54 @@
+@import 'tailwindcss';
+
+
+@theme light {
+  --color-base: #e4f2f7;
+  --color-mantle: #d0e8f2;
+  --color-crust: #b8d8e8;
+  --color-surface-0: #c4dfe9;
+  --color-surface-1: #d8ecf4;
+  --color-surface-2: #e8f4f9;
+  --color-overlay-0: #6d9aaa;
+  --color-overlay-1: #7eabbc;
+  --color-overlay-2: #8fbccc;
+  --color-subtext-0: #3e6070;
+  --color-subtext-1: #2c4f5e;
+  --color-text: #1a3340;
+  --color-foam: #6ec6d8;
+  --color-teal: #2ba8b8;
+  --color-sapphire: #2a7fcf;
+  --color-iris: #7a9be0;
+  --color-coral: #e07c5a;
+  --color-sand: #c9a96e;
+  --color-seafoam: #58b89a;
+  --color-biolum: #5cc8d8;
+  --color-abyss: #0a3a4a;
+  --color-kelp: #3a8a5a;
+  --color-urchin: #c25878;
+}
+
+@theme dark {
+  --color-base: #0d1f2d;
+  --color-mantle: #0a1820;
+  --color-crust: #071318;
+  --color-surface-0: #112230;
+  --color-surface-1: #162a38;
+  --color-surface-2: #1c3342;
+  --color-overlay-0: #2e5060;
+  --color-overlay-1: #3c6272;
+  --color-overlay-2: #4a7284;
+  --color-subtext-0: #7fb0c0;
+  --color-subtext-1: #9ac4d4;
+  --color-text: #c8e8f4;
+  --color-foam: #7ed8e8;
+  --color-teal: #4ec4d4;
+  --color-sapphire: #5aabef;
+  --color-iris: #9ab4f4;
+  --color-coral: #f09878;
+  --color-sand: #e4c88a;
+  --color-seafoam: #74d4b4;
+  --color-biolum: #7ae8f8;
+  --color-abyss: #b4e0f0;
+  --color-kelp: #68c890;
+  --color-urchin: #e888a8;
+}
