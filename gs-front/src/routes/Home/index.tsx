@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import Surface from "../../components/Ocean/Surface"
-import Shallow from "../../components/Ocean/Shallow"
 import Midwater from "../../components/Ocean/Midwater"
 import AbyssZone from "../../components/Ocean/AbyssZone"
 import Floor from "../../components/Ocean/Floor"
 import DepthIndicator from "../../components/Ocean/DepthIndicator"
+import Fish from "../../components/Ocean/Fish"
 
 const zones = [
   { name: "Superfície",       desc: "Zona fótica · 0–200m",          bg: "#4ab8e8", start: 0    },
@@ -16,14 +16,14 @@ const zones = [
 
 function lerpColor(c1: string, c2: string, t: number) {
   const hex = (h: string) => [
-    parseInt(h.slice(1,3),16),
-    parseInt(h.slice(3,5),16),
-    parseInt(h.slice(5,7),16),
+    parseInt(h.slice(1, 3), 16),
+    parseInt(h.slice(3, 5), 16),
+    parseInt(h.slice(5, 7), 16),
   ]
-  const [r1,g1,b1] = hex(c1)
-  const [r2,g2,b2] = hex(c2)
+  const [r1, g1, b1] = hex(c1)
+  const [r2, g2, b2] = hex(c2)
   const l = (a: number, b: number) => Math.round(a + (b - a) * t)
-  return `rgb(${l(r1,r2)},${l(g1,g2)},${l(b1,b2)})`
+  return `rgb(${l(r1, r2)},${l(g1, g2)},${l(b1, b2)})`
 }
 
 export default function Home() {
@@ -38,7 +38,7 @@ export default function Home() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  const zi = zones.findLastIndex(z => progress >= z.start)
+  const zi = zones.reduce((acc, z, i) => (progress >= z.start ? i : acc), 0)
   const cur = zones[zi]
   const next = zones[Math.min(zi + 1, zones.length - 1)]
   const span = (next.start - cur.start) || 1
@@ -48,20 +48,23 @@ export default function Home() {
   return (
     <div style={{ height: "500vh" }}>
       <div
-        className="sticky top-0 h-screen overflow-hidden transition-colors duration-100"
-        style={{ background: bgColor }}
+        className="sticky top-0 h-screen overflow-hidden"
+        style={{ background: bgColor, transition: "background 0.1s" }}
       >
         <Surface progress={progress} />
-        <Shallow progress={progress} />
         <Midwater progress={progress} />
         <AbyssZone progress={progress} />
         <Floor progress={progress} />
+        <Fish progress={progress} />
+        
+        {/* indicador de profundidade */}
         <DepthIndicator progress={progress} zone={cur} />
 
-        <div className="absolute left-8 top-1/2 -translate-y-1/2">
+        {/* nome da zona */}
+        <div className="absolute left-8 top-1/2 -translate-y-1/2 pointer-events-none">
           <h2
-            className="font-display text-5xl font-light italic text-white/90"
-            style={{ opacity: Math.min(1, Math.abs(progress - cur.start - 0.1) < 0.15 ? 1 : 0.7 ) }}
+            className="text-5xl font-light italic text-white/90"
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             {cur.name}
           </h2>
@@ -69,6 +72,16 @@ export default function Home() {
             {cur.desc}
           </p>
         </div>
+
+        {/* scroll hint */}
+        {progress < 0.03 && (
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+            <span className="text-white/40 text-xs tracking-widest uppercase">mergulhe</span>
+            <svg width="16" height="20" viewBox="0 0 16 20" fill="none">
+              <path d="M8 2 L8 16 M3 11 L8 17 L13 11" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        )}
       </div>
     </div>
   )
