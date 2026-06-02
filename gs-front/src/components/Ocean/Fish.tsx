@@ -62,22 +62,20 @@ export default function Fish({ progress }: { progress: number }) {
 
     function draw() {
       const p = progressRef.current;
-      // Mapeia o progresso (0-1) para o índice da zona (0-4)
-      const currentZone = Math.min(Math.floor(p * 5), 4);
       
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       fishRef.current.forEach(fish => {
-        const dist = Math.abs(fish.zone - currentZone);
-        const zoneStart = fish.zone * 0.2;
-        const zoneEnd = (fish.zone + 1) * 0.2;
+        const zoneStart = fish.zone * 0.2 - 0.05;
+        const zoneEnd = (fish.zone + 1) * 0.2 + 0.05;
 
         // calcula opacidade por zona
         let opacity = 0
         if (p >= zoneStart && p <= zoneEnd) {
           // Fade in no início da zona e fade out no final
-          const zoneProgress = (p - zoneStart) / 0.2;
-          opacity = Math.min(zoneProgress / 0.1, (1 - zoneProgress) / 0.1, 1);
+          const zoneRange = zoneEnd - zoneStart;
+          const zoneProgress = (p - zoneStart) / zoneRange;
+          opacity = Math.min(zoneProgress / 0.2, (1 - zoneProgress) / 0.2, 1);
         }
 
         if (opacity <= 0.01) return
