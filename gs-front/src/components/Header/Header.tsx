@@ -28,7 +28,7 @@ export default function Header() {
       <nav className="flex items-center gap-3">
         <Link to="/home" className="text-subtext-1 hover:text-text transition-colors">Sobre Nós</Link>
         <Link to="/sobre" className="text-subtext-1 hover:text-text transition-colors">Sobre</Link>
-        <Link to="/contact" className="text-subtext-1 hover:text-text transition-colors">Contato</Link>
+        <Link to="/contato" className="text-subtext-1 hover:text-text transition-colors">Contato</Link>
         <Link to="/blog" className="text-subtext-1 hover:text-text transition-colors">Blog</Link>
         <Link to="/login" className="text-subtext-1 hover:text-text transition-colors">Login</Link>
         <Link to="/register" className="text-subtext-1 hover:text-text transition-colors">Registrar</Link>
