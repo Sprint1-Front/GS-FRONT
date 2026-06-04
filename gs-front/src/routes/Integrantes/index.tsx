@@ -13,18 +13,6 @@ const zones = [
   { name: "Hadal",            desc: "Fossa das Marianas · 6000–11km", bg: "#030810", start: 0.85 },
 ]
 
-function lerpColor(c1: string, c2: string, t: number) {
-  const hex = (h: string) => [
-    parseInt(h.slice(1, 3), 16),
-    parseInt(h.slice(3, 5), 16),
-    parseInt(h.slice(5, 7), 16),
-  ]
-  const [r1, g1, b1] = hex(c1)
-  const [r2, g2, b2] = hex(c2)
-  const l = (a: number, b: number) => Math.round(a + (b - a) * t)
-  return `rgb(${l(r1, r2)},${l(g1, g2)},${l(b1, b2)})`
-}
-
 const integrantes = [
   { name: "Andre Sousa Matuda", role: "Frontend Developer", github: "Andre-Matuda" },
   { name: "Kaliel", role: "Backend Developer", github: "if-kaliel" },
@@ -57,14 +45,6 @@ export default function Integrantes() {
 
   const zi = zones.reduce((acc, z, i) => (progress >= z.start ? i : acc), 0)
   const cur = zones[zi]
-  const next = zones[Math.min(zi + 1, zones.length - 1)]
-  const span = (next.start - cur.start) || 1
-  const t = Math.min((progress - cur.start) / span, 1)
-  const dynamicBg = lerpColor(cur.bg, next.bg, t);
-  const visibleIndex = Math.min(
-    Math.floor(progress * integrantes.length * 1.2),
-    integrantes.length - 1
-  );
 
   return (
     <div className="min-h-[500vh] flex flex-col items-center pt-20">
