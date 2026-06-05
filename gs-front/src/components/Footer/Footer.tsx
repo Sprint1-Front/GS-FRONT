@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Floor from "../Ocean/Floor";
 
 export default function Footer() {
