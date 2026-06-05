@@ -40,6 +40,7 @@ const integrantes = [
   {
     name: "Andre Sousa Matuda",
     github: "Andre-Matuda",
+    turma: "1TDSPB",
     rm: "RM566733",
     linkedin: "andrematuda",
     depth: "8%",
@@ -48,8 +49,9 @@ const integrantes = [
     delay: "0s",
   },
   {
-    name: "Kaliel",
+    name: "Kaliel Conceição de Aquino",
     github: "if-kaliel",
+    turma: "1TDSPB",
     rm: "RM567587",
     linkedin: "kaliel-aquino-a034332b6",
     depth: "28%",
@@ -58,8 +60,9 @@ const integrantes = [
     delay: "1s",
   },
   {
-    name: "Paulo",
+    name: "Paulo Henrique Muniz Diedrich",
     github: "paulodiedrich",
+    turma: "1TDSPB",
     rm: "RM567618",
     linkedin: "paulo-henrique-muniz-diedrich-496aba389",
     depth: "50%",
@@ -68,8 +71,9 @@ const integrantes = [
     delay: "2s",
   },
   {
-    name: "Guilherme",
+    name: "Guilherme Oliveira Feitosa",
     github: "GuilherOliverFeitosa",
+    turma: "1TDSPB",
     rm: "RM566842",
     linkedin: "guilherme-oliveira-feitosa-762b56389",
     depth: "72%",
@@ -78,8 +82,9 @@ const integrantes = [
     delay: "0.5s",
   },
   {
-    name: "Ilda",
+    name: "Ilda Ester Mussungayi Afonso",
     github: "IldaAfonso",
+    turma: "1TDSPA",
     rm: "RM568233",
     linkedin: "ildaafonso",
     depth: "90%",
@@ -200,9 +205,10 @@ export default function Integrantes() {
               {member.title}
             </span>
 
-            <h2 className="text-xl font-bold mb-1 text-blue-50">
+            <h2 className="text-2xl font-bold mb-2 text-blue-50">
               {member.name}
             </h2>
+            <p className="text-xl font-bold mb-1 text-blue-50">{member.turma}</p>
             <div className="bg-black/40 px-3 py-1 rounded-md text-gray-300 text-xs mb-6 font-mono border border-white/5 shadow-inner">
               {member.rm}
             </div>
