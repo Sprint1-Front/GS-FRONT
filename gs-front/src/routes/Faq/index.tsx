@@ -4,6 +4,7 @@ import Midwater from "../../components/Ocean/Midwater";
 import AbyssZone from "../../components/Ocean/AbyssZone";
 import Floor from "../../components/Ocean/Floor";
 import DepthIndicator from "../../components/Ocean/DepthIndicator";
+import Fish from "../../components/Ocean/Fish";
 
 const zones = [
   { name: "Superfície",    desc: "Zona fótica · 0–200m",          bg: "#4ab8e8", start: 0    },
@@ -77,8 +78,8 @@ export default function Faq() {
   const bgColor = lerpColor(cur.bg, next.bg, t);
 
   return (
-    // Altura grande (h-[400vh]) garante espaço para rolar pelas zonas suavemente
-    <div className="relative min-h-[400vh] text-white">
+    // Altura reduzida (h-[250vh]) para exigir menos scrolladas e alinhar com as zonas
+    <div className="relative min-h-[250vh] text-white">
       
       {/* BACKGROUND FIXO COM AS ANIMAÇÕES */}
       <div
@@ -89,6 +90,7 @@ export default function Faq() {
         <Midwater progress={progress} />
         <AbyssZone progress={progress} />
         <Floor progress={progress} />
+        <Fish progress={progress} />
 
         <DepthIndicator progress={progress} zone={cur} />
       </div>
@@ -103,14 +105,14 @@ export default function Faq() {
         </div>
 
         {/* Lista de Cards Espaçados */}
-        <div className="w-full space-y-[40vh]"> 
+        <div className="w-full space-y-[20vh]"> 
           {faqQuestions.map((item, index) => {
             const isCurrentZone = zi === item.zoneIndex;
 
             return (
               <div
                 key={index}
-                className={`p-8 rounded-2xl border transition-all duration-700 ${
+                className={`p-8 rounded-2xl border transition-all duration-650 ${
                   isCurrentZone 
                     ? "bg-white/10 border-white/20 shadow-[0_8px_32px_0_rgba(255,255,255,0.05)] scale-100 opacity-100" 
                     : "bg-black/10 border-white/5 scale-95 opacity-40 blur-[1px]"
