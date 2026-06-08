@@ -39,20 +39,35 @@ export default function Register() {
     }
 
     try {
+      // 1. Verifica no banco JSON se o e-mail já existe
+      const checkResponse = await fetch(`${API_URL}?email=${email.trim()}`)
+      const usuariosExistentes = await checkResponse.json()
+
+      if (usuariosExistentes.length > 0) {
+        setErrorMsg("E-mail já cadastrado a bordo.")
+        setIsSubmitting(false)
+        return
+      }
+
+      // Adiciona a data de cadastro para simular o comportamento de um banco completo
+      const usuarioFinal = {
+        ...novoUsuario,
+        dataCadastro: new Date().toISOString()
+      }
+
+      // 2. Se não existir, realiza o cadastro (POST)
       const response = await fetch(API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Accept":       "application/json",
         },
-        body: JSON.stringify(novoUsuario),
+        body: JSON.stringify(usuarioFinal),
       })
 
       if (response.ok || response.status === 201) {
         setSuccess(true)
         setTimeout(() => navigate("/login"), 2500)
-      } else if (response.status === 409) {
-        setErrorMsg("E-mail já cadastrado a bordo.")
       } else {
         throw new Error(`Erro no servidor. Status: ${response.status}`)
       }

@@ -81,17 +81,6 @@ const integrantes = [
     title: "Guardião Abissal",
     delay: "0.5s",
   },
-  {
-    name: "Ilda Ester Mussungayi Afonso",
-    github: "IldaAfonso",
-    turma: "1TDSPA",
-    rm: "RM568233",
-    linkedin: "ildaafonso",
-    depth: "90%",
-    align: "justify-center",
-    title: "Desbravadora Hadal",
-    delay: "1.5s",
-  },
 ];
 
 export default function Integrantes() {

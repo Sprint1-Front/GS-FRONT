@@ -10,6 +10,7 @@ import Sobre from './routes/Sobre/index.tsx';
 import Faq from './routes/Faq/index.tsx';
 import Login from './routes/Login/index.tsx';
 import CadastroUsuario from './routes/CadastroUsuario/index.tsx';
+import Dashboard from './routes/Dashboard/index.tsx';
 
 
 const router = createBrowserRouter([
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
       { path: "/faq", element: <Faq /> },
       { path: "/cadastro", element: <CadastroUsuario /> },
       { path: "/login", element: <Login /> },
+      { path: "/dashboard", element: <Dashboard /> },
     ],
   },
 ]);
