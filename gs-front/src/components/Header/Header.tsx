@@ -10,17 +10,15 @@ const links = [
 export default function Header() {
   const location = useLocation();
 
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.theme === "dark" ||
+        (!localStorage.theme && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    }
+    return false;
+  });
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const saved =
-      localStorage.theme === "dark" ||
-      (!localStorage.theme &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
-    setDark(saved);
-  }, []);
 
   useEffect(() => {
     const root = document.documentElement;

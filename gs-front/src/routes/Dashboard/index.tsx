@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import type { tipoFocoPoluicao } from "../../types/tipoFocoPoluicao";
@@ -106,11 +106,11 @@ export default function Dashboard() {
             <span className="text-xl">📊</span>
             <span className="font-medium">Visão Geral</span>
           </Link>
-          <Link to="/focos" className="flex items-center gap-3 px-4 py-3 text-[var(--color-subtext-1)] hover:bg-[var(--color-mantle)] hover:text-white rounded-xl transition-all">
+          <Link to="/focos" className="flex items-center gap-3 px-4 py-3 text-[var(--color-subtext-1)] hover:bg-[var(--color-mantle)] hover:text-text rounded-xl transition-all">
             <span className="text-xl">📍</span>
             <span>Focos de Poluição</span>
           </Link>
-          <Link to="/ordens" className="flex items-center gap-3 px-4 py-3 text-[var(--color-subtext-1)] hover:bg-white/5 hover:text-white rounded-xl transition-all">
+          <Link to="/ordens" className="flex items-center gap-3 px-4 py-3 text-[var(--color-subtext-1)] hover:bg-surface-0 hover:text-text rounded-xl transition-all">
             <span className="text-xl">📋</span>
             <span>Ordens de Coleta</span>
           </Link>
@@ -118,7 +118,7 @@ export default function Dashboard() {
 
         <button
           onClick={logout}
-          className="mt-auto flex items-center gap-3 px-4 py-3 text-[var(--color-red)] hover:bg-[var(--color-red)]/10 rounded-xl transition-all"
+          className="mt-auto flex items-center gap-3 px-4 py-3 text-[var(--color-coral)] hover:bg-[var(--color-coral)]/10 rounded-xl transition-all"
         >
           <span className="text-xl">🚪</span>
           <span>Encerrar Sessão</span>
@@ -132,7 +132,7 @@ export default function Dashboard() {
             <h1 className="text-3xl font-light">Monitoramento Oceânico</h1>
             <p className="text-[var(--color-subtext-0)] mt-1">Status em tempo real das operações de limpeza.</p>
           </div>
-          <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-2xl flex items-center gap-4">
+          <div className="bg-surface-0 border border-white/10 px-6 py-3 rounded-2xl flex items-center gap-4">
             <div className="w-2 h-2 bg-[var(--color-teal)] rounded-full animate-pulse"></div>
             <span className="text-sm font-mono text-[var(--color-text)]">Sonar Ativo</span>
           </div>
@@ -140,19 +140,19 @@ export default function Dashboard() {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-          <div className="bg-white/5 border border-[var(--color-crust)] p-6 rounded-[2rem] backdrop-blur-sm">
+          <div className="bg-surface-0 border border-[var(--color-crust)] p-6 rounded-[2rem] backdrop-blur-sm">
             <p className="text-[var(--color-subtext-0)] text-xs uppercase tracking-widest mb-2">Focos Ativos</p>
             <p className="text-4xl font-light text-[var(--color-sapphire)]">{focoAtivos}</p>
           </div>
-          <div className="bg-white/5 border border-[var(--color-crust)] p-6 rounded-[2rem] backdrop-blur-sm">
+          <div className="bg-surface-0 border border-[var(--color-crust)] p-6 rounded-[2rem] backdrop-blur-sm">
             <p className="text-[var(--color-subtext-0)] text-xs uppercase tracking-widest mb-2">Risco Crítico</p>
-            <p className="text-4xl font-light text-[var(--color-red)]">{riscoAlto}</p>
+            <p className="text-4xl font-light text-[var(--color-coral)]">{riscoAlto}</p>
           </div>
-          <div className="bg-white/5 border border-[var(--color-crust)] p-6 rounded-[2rem] backdrop-blur-sm">
+          <div className="bg-surface-0 border border-[var(--color-crust)] p-6 rounded-[2rem] backdrop-blur-sm">
             <p className="text-[var(--color-subtext-0)] text-xs uppercase tracking-widest mb-2">Ordens Pendentes</p>
             <p className="text-4xl font-light text-[var(--color-yellow)]">{ordemPendentes}</p>
           </div>
-          <div className="bg-white/5 border border-[var(--color-crust)] p-6 rounded-[2rem] backdrop-blur-sm">
+          <div className="bg-surface-0 border border-[var(--color-crust)] p-6 rounded-[2rem] backdrop-blur-sm">
             <p className="text-[var(--color-subtext-0)] text-xs uppercase tracking-widest mb-2">Regiões Mapeadas</p>
             <p className="text-4xl font-light text-[var(--color-teal)]">{regioes.length}</p>
           </div>
@@ -179,10 +179,10 @@ export default function Dashboard() {
                 </thead>
                 <tbody className="divide-y divide-[var(--color-surface-2)]">
                   {focos.slice(0, 5).map((foco) => (
-                    <tr key={foco.idFoco} className="hover:bg-white/5 transition-colors">
+                    <tr key={foco.idFoco} className="hover:bg-surface-0 transition-colors">
                       <td className="px-6 py-4 text-sm">{foco.idRegiao}</td>
                       <td className="px-6 py-4">
-                        <span className={`text-[10px] px-2 py-1 rounded-full border ${foco.nivelRisco === 'Alto' ? 'border-[var(--color-red)] text-[var(--color-red)] bg-red-500/10' :
+                        <span className={`text-[10px] px-2 py-1 rounded-full border ${foco.nivelRisco === 'Alto' ? 'border-[var(--color-coral)] text-[var(--color-coral)] bg-red-500/10' :
                             foco.nivelRisco === 'Médio' ? 'border-yellow-500/50 text-yellow-400 bg-yellow-500/10' :
                               'border-green-500/50 text-green-400 bg-green-500/10'
                           }`}>
@@ -190,7 +190,7 @@ export default function Dashboard() {
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        <button onClick={() => handleDeleteFoco(foco.idFoco)} className="text-[var(--color-red)] hover:text-red-300 text-sm">Excluir</button>
+                        <button onClick={() => handleDeleteFoco(foco.idFoco)} className="text-[var(--color-coral)] hover:text-red-300 text-sm">Excluir</button>
                       </td>
                     </tr>
                   ))}
