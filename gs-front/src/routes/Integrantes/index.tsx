@@ -61,7 +61,7 @@ const integrantes = [
   },
   {
     name: "Paulo Henrique Muniz Diedrich",
-    github: "paulodiedrich",
+    github: "DiedrichPaulo",
     turma: "1TDSPB",
     rm: "RM567618",
     linkedin: "paulo-henrique-muniz-diedrich-496aba389",
