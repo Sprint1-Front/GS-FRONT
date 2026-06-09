@@ -94,17 +94,17 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Conteúdo Principal */}
+        {/* CONTEÚDO PRINCIPAL (Interativo conforme o scroll) */}
         <div className="absolute inset-0 pointer-events-none flex flex-col items-center justify-center px-4 z-20">
-          {/* Zona 0 */}
+          {/* ZONA 0: SUPERFÍCIE (Hero Section) */}
           <div
             className={`transition-all duration-700 absolute flex flex-col items-center text-center transform ${progress < 0.15 ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-8 pointer-events-none"}`}
           >
             <h1
-              className="text-6x1 md:text-8xl font-bold text-white mb-6 drop-shadow-xl"
+              className="text-6xl md:text-8xl font-bold text-white mb-6 drop-shadow-xl"
               style={{ fontFamily: "'Cormorant Garamond', serif" }}
             >
-              THALASSOR
+              OceanGuard
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl drop-shadow-md font-light">
               Monitoramento inteligente e preservação contínua das nossas águas
@@ -115,85 +115,92 @@ export default function Home() {
                 to="/cadastro"
                 className="px-8 py-3 bg-blue-500/90 hover:bg-blue-400 text-white rounded-full font-semibold transition-all shadow-lg hover:shadow-blue-500/50 backdrop-blur-sm"
               >
-                Embarque Agora
+                Começar Agora
               </Link>
-              <a
-                href="/login"
+              <Link
+                to="/login"
                 className="px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full font-semibold transition-all"
               >
-                Acesso à Tripulação
-              </a>
+                Fazer Login
+              </Link>
+            </div>
+          </div>
+
+          {/* ZONA 1: CREPUSCULAR (Dashboard) */}
+          <div
+            className={`transition-all duration-700 absolute flex flex-col items-center text-center transform ${progress >= 0.15 && progress < 0.35 ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-8 pointer-events-none"}`}
+          >
+            <h2
+              className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg"
+              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            >
+              Dados em Tempo Real
+            </h2>
+            <p className="text-lg md:text-xl text-white/90 mb-10 max-w-xl drop-shadow-md font-light">
+              Acompanhe métricas vitais de temperatura, pH e poluição
+              diretamente do nosso painel de controle interativo.
+            </p>
+            <Link
+              to="/dashboard"
+              className="px-8 py-3 bg-teal-500/90 hover:bg-teal-400 text-white rounded-full font-semibold transition-all shadow-lg hover:shadow-teal-500/50 backdrop-blur-sm"
+            >
+              Acessar Dashboard
+            </Link>
+          </div>
+
+          {/* ZONA 2: MEIA-NOITE (FAQ) */}
+          <div
+            className={`transition-all duration-700 absolute flex flex-col items-center text-center transform ${progress >= 0.35 && progress < 0.65 ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-8 pointer-events-none"}`}
+          >
+            <h2
+              className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg"
+              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            >
+              Como Funciona?
+            </h2>
+            <p className="text-lg md:text-xl text-white/90 mb-10 max-w-xl drop-shadow-md font-light">
+              Entenda a tecnologia por trás dos nossos sensores subaquáticos e o
+              impacto gerado na vida marinha.
+            </p>
+            <Link
+              to="/faq"
+              className="px-8 py-3 bg-indigo-500/90 hover:bg-indigo-400 text-white rounded-full font-semibold transition-all shadow-lg hover:shadow-indigo-500/50 backdrop-blur-sm"
+            >
+              Dúvidas Frequentes (FAQ)
+            </Link>
+          </div>
+
+          {/* ZONA 3 E 4: ABISSAL / HADAL (Sobre e Integrantes) */}
+          <div
+            className={`transition-all duration-700 absolute flex flex-col items-center text-center transform ${progress >= 0.65 ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-8 pointer-events-none"}`}
+          >
+            <h2
+              className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg"
+              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            >
+              Quem Somos
+            </h2>
+            <p className="text-lg md:text-xl text-white/90 mb-10 max-w-xl drop-shadow-md font-light">
+              Conheça a equipe dedicada a explorar e proteger as profundezas até
+              então desconhecidas.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+              <Link
+                to="/sobre"
+                className="px-8 py-3 bg-slate-700/80 hover:bg-slate-600 border border-slate-500 text-white rounded-full font-semibold transition-all backdrop-blur-sm"
+              >
+                Sobre o Projeto
+              </Link>
+              <Link
+                to="/integrantes"
+                className="px-8 py-3 bg-transparent hover:bg-white/10 border border-white/30 text-white rounded-full font-semibold transition-all backdrop-blur-sm"
+              >
+                Ver Integrantes
+              </Link>
             </div>
           </div>
         </div>
-
-        {/* Zona 1 */}
-        <div
-          className={`transition-all duration-700 absolute flex flex-col items-center text-center transform ${progress >= 0.15 && progress < 0.35 ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-8 pointer-events-none"}`}
-        >
-          <h2
-            className="text-4xl md:text-6xl font-light italic text-white/90 drop-shadow-md"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
-          >
-            Dados em Tempo Real
-          </h2>
-          <p className="text-lg md:text-xl text-white/90 mt-4 max-w-xl drop-shadow-sm font-light">
-            Acompanhe métricas vitais de temperatura, pH e poluição diretamente
-            do nosso painel de controle interativo.
-          </p>
-          <Link
-            to="/login"
-            className="px-8 py-3 bg-teal-500/90 hover:bg-teal-400 text-white rounded-full font-semibold transition-all shadow-lg hover:shadow-teal-500/50 backdrop-blur-sm"
-          >
-            Acessar Dashboard
-          </Link>
-        </div>
-
-        {/* Zona 2 */}
-        <div
-          className={`transition-all duration-700 absolute flex flex-col items-center text-center transform ${progress >= 0.35 && progress < 0.65 ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-8 pointer-events-none"}`}
-        >
-          <h2
-            className="text-4xl md:text-6xl font-light italic text-white/90 drop-shadow-md"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
-          >
-            Iniciativas de Preservação
-          </h2>
-          <p className="text-lg md:text-xl text-white/90 mt-4 max-w-xl drop-shadow-sm font-light">
-            Descubra nossos projetos de conservação marinha e veja como você pode contribuir para um oceano mais saudável.
-          </p>
-          <Link
-            to="/solucao"
-            className="px-8 py-3 bg-green-500/90 hover:bg-green-400 text-white rounded-full font-semibold transition-all shadow-lg hover:shadow-green-500/50 backdrop-blur-sm"
-          >
-            Conhecer Projetos
-          </Link>
-        </div>
       </div>
-
-        {/* scroll hint */}
-        {progress < 0.03 && (
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce z-10">
-            <span className="text-white/60 text-xs tracking-widest uppercase drop-shadow-md font-semibold">
-              Mergulhe
-            </span>
-            <svg
-              width="16"
-              height="20"
-              viewBox="0 0 16 20"
-              fill="none"
-              className="drop-shadow-md"
-            >
-              <path
-                d="M8 2 L8 16 M3 11 L8 17 L13 11"
-                stroke="rgba(255,255,255,0.8)"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-        )}
-      </div>
+    </div>
   );
 }

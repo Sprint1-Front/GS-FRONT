@@ -17,7 +17,7 @@ const FISH_BY_ZONE = [
   { emojis: ["🦑", "🐙", "🪼", "🦈"], zone: 1 },
   { emojis: ["🦈", "🪼", "🦐"], zone: 2 },
   { emojis: ["🪼", "🦐", "🐡"], zone: 3 },
-  { emojis: ["🦑", "🦐"], zone: 4 },
+  { emojis: ["🦑", "╰(*°▽°*)╯"], zone: 4 },
 ];
 
 function createFish(zone: number): FishData {

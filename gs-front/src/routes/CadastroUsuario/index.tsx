@@ -16,8 +16,8 @@ export default function Register() {
   const [success, setSuccess]           = useState(false)
   const [errorMsg, setErrorMsg]         = useState<string | null>(null)
 
-  const API_URL = "http://localhost:8080/usuarios"
-
+  const API_URL = "https://thalassor.onrender.com/usuarios"
+   // URL do JSON Server
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setErrorMsg(null)
@@ -40,10 +40,12 @@ export default function Register() {
 
     try {
       // 1. Verifica no banco JSON se o e-mail já existe
-      const checkResponse = await fetch(`${API_URL}?email=${email.trim()}`)
+      const checkResponse = await fetch(API_URL)
       const usuariosExistentes = await checkResponse.json()
 
-      if (usuariosExistentes.length > 0) {
+      const emailJaExiste = usuariosExistentes.some((u: any) => u.email === email.trim())
+
+      if (emailJaExiste) {
         setErrorMsg("E-mail já cadastrado a bordo.")
         setIsSubmitting(false)
         return
