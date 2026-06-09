@@ -171,7 +171,7 @@ Para dúvidas ou mais informações sobre o projeto, entre em contato com a equi
 
 
 
-- Email: thalassor@email.com.br
+- Email: ThalassorOcean@proton.me
 
 - Telefone: (11) 99999-9999
 
