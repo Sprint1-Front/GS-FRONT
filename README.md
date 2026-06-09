@@ -27,6 +27,8 @@ Para acessar, testar e conhecer mais sobre a nossa solução, utilize os links a
 
 - **💻 Repositório GitHub:** [Link do repositório](https://github.com/Sprint1-Front/GS-FRONT.git)
 
+- **💻 Repositório BACK-END:** [Link do repositório](https://github.com/If-Kaliel/thalassor.git)
+
 ---
 
 ## Para rodar o projeto localmente em sua máquina:
@@ -83,5 +85,21 @@ vercel --prod
 
 ```
 
-- **💻 Repositório BACK-END:** [Link do repositório](https://github.com/If-Kaliel/thalassor.git)
+
+## 🛠 Tecnologias Utilizadas
+
+Este projeto foi construído com as seguintes tecnologias e ferramentas:
+
+
+
+React + Vite - Framework e Bundler
+
+TypeScript - Tipagem estática
+
+Tailwind CSS - Estilização
+
+React Router DOM - Roteamento (Login, Cadastro, Dashboard, etc.)	
+
+
+
 
