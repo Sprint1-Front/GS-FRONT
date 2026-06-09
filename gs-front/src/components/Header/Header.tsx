@@ -10,17 +10,15 @@ const links = [
 export default function Header() {
   const location = useLocation();
 
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.theme === "dark" ||
+        (!localStorage.theme && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    }
+    return false;
+  });
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const saved =
-      localStorage.theme === "dark" ||
-      (!localStorage.theme &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches);
-    setDark(saved);
-  }, []);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -44,16 +42,15 @@ export default function Header() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'backdrop-blur-md' : ''}`}
       style={{
         background: scrolled
-          ? "rgba(10, 24, 32, 0.85)"
+          ? "color-mix(in srgb, var(--color-mantle) 85%, transparent)"
           : isHome
             ? "transparent"
-            : "rgba(10, 24, 32, 0.6)",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
+            : "color-mix(in srgb, var(--color-mantle) 60%, transparent)",
         borderBottom: scrolled
-          ? "1px solid rgba(46, 80, 96, 0.4)"
+          ? "1px solid color-mix(in srgb, var(--color-overlay-0) 40%, transparent)"
           : "1px solid transparent",
       }}
     >
@@ -61,19 +58,11 @@ export default function Header() {
         {/* logo */}
         <Link
           to="/"
-          className="flex items-center gap-2 no-underline"
-          style={{ textDecoration: "none" }}
+          className="flex items-center gap-2 no-underline text-text"
         >
-          <span style={{ fontSize: 22 }}>🌊</span>
+          <span className="text-[22px]">🌊</span>
           <span
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontSize: 20,
-              fontWeight: 400,
-              fontStyle: "italic",
-              color: "#c8e8f4",
-              letterSpacing: ".04em",
-            }}
+            className="font-display text-[20px] font-normal italic tracking-wider text-text"
           >
             Thalassor
           </span>
@@ -87,30 +76,8 @@ export default function Header() {
               <Link
                 key={l.to}
                 to={l.to}
-                style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: 13,
-                  fontWeight: 400,
-                  letterSpacing: ".06em",
-                  textTransform: "uppercase",
-                  textDecoration: "none",
-                  color: active ? "#4ec4d4" : "rgba(200, 232, 244, 0.55)",
-                  borderBottom: active
-                    ? "1px solid #4ec4d4"
-                    : "1px solid transparent",
-                  paddingBottom: 2,
-                  transition: "color .2s, border-color .2s",
-                }}
-                onMouseEnter={(e) => {
-                  if (!active)
-                    (e.target as HTMLElement).style.color =
-                      "rgba(200,232,244,0.9)";
-                }}
-                onMouseLeave={(e) => {
-                  if (!active)
-                    (e.target as HTMLElement).style.color =
-                      "rgba(200,232,244,0.55)";
-                }}
+                className={`font-body text-[13px] font-normal tracking-wider uppercase no-underline pb-[2px] border-b border-transparent transition-colors duration-200 hover:text-text/90 ${active ? 'text-teal border-teal' : 'text-text/55'}`}
+                style={active ? { color: 'var(--color-teal)', borderBottomColor: 'var(--color-teal)' } : {}}
               >
                 {l.label}
               </Link>
@@ -124,58 +91,33 @@ export default function Header() {
           <button
             onClick={() => setDark(!dark)}
             title={dark ? "Modo claro" : "Modo escuro"}
+            className="w-9 h-9 flex items-center justify-center rounded-full cursor-pointer text-[15px] transition-all duration-200"
             style={{
-              background: "rgba(46, 80, 96, 0.3)",
-              border: "1px solid rgba(46, 80, 96, 0.6)",
-              borderRadius: 20,
-              width: 36,
-              height: 36,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              fontSize: 15,
-              transition: "all .2s",
+              background: "color-mix(in srgb, var(--color-overlay-0) 30%, transparent)",
+              border: "1px solid color-mix(in srgb, var(--color-overlay-0) 60%, transparent)",
             }}
           >
-            {dark ? "☀️" : "🌙"}
+            {dark ? "☼" : "☾"}
           </button>
 
           {/* login — desktop */}
           <Link
             to="/login"
-            className="hidden md:block"
+            className="hidden md:block font-mono text-[11px] tracking-widest uppercase py-[7px] px-4 rounded-sm no-underline font-medium transition-colors duration-200"
             style={{
-              fontFamily: "'DM Mono', monospace",
-              fontSize: 11,
-              letterSpacing: ".14em",
-              textTransform: "uppercase",
-              color: "#071318",
-              background: "#4ec4d4",
-              padding: "7px 16px",
-              borderRadius: 2,
-              textDecoration: "none",
-              fontWeight: 500,
-              transition: "background .2s",
+              color: "var(--color-crust)",
+              background: "var(--color-teal)",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "#7ed8e8")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "#4ec4d4")}
+            onMouseEnter={(e) => (e.currentTarget.style.background = "var(--color-foam)")}
+            onMouseLeave={(e) => (e.currentTarget.style.background = "var(--color-teal)")}
           >
             Embarcar
           </Link>
 
           {/* hamburguer — mobile */}
           <button
-            className="md:hidden"
+            className="md:hidden bg-transparent border-none cursor-pointer text-[22px] leading-none text-text"
             onClick={() => setMenuOpen(!menuOpen)}
-            style={{
-              background: "transparent",
-              border: "none",
-              cursor: "pointer",
-              color: "#c8e8f4",
-              fontSize: 22,
-              lineHeight: 1,
-            }}
           >
             {menuOpen ? "✕" : "☰"}
           </button>
@@ -188,8 +130,8 @@ export default function Header() {
           maxHeight: menuOpen ? 400 : 0,
           overflow: "hidden",
           transition: "max-height .35s ease",
-          background: "rgba(7, 19, 24, 0.97)",
-          borderTop: menuOpen ? "1px solid rgba(46,80,96,0.4)" : "none",
+          background: "color-mix(in srgb, var(--color-crust) 97%, transparent)",
+          borderTop: menuOpen ? "1px solid color-mix(in srgb, var(--color-overlay-0) 40%, transparent)" : "none",
         }}
       >
         <nav className="flex flex-col px-6 py-4 gap-4">
@@ -198,17 +140,9 @@ export default function Header() {
               key={l.to}
               to={l.to}
               onClick={() => setMenuOpen(false)}
+              className="font-body text-[14px] tracking-wider uppercase no-underline transition-colors duration-200"
               style={{
-                fontFamily: "'Outfit', sans-serif",
-                fontSize: 14,
-                letterSpacing: ".08em",
-                textTransform: "uppercase",
-                textDecoration: "none",
-                color:
-                  location.pathname === l.to
-                    ? "#4ec4d4"
-                    : "rgba(200,232,244,0.6)",
-                transition: "color .2s",
+                color: location.pathname === l.to ? "var(--color-teal)" : "color-mix(in srgb, var(--color-text) 60%, transparent)"
               }}
             >
               {l.label}
@@ -217,20 +151,10 @@ export default function Header() {
           <Link
             to="/login"
             onClick={() => setMenuOpen(false)}
+            className="inline-block mt-1 w-fit font-mono text-[11px] tracking-widest uppercase py-2 px-4 rounded-sm no-underline font-medium"
             style={{
-              fontFamily: "'DM Mono', monospace",
-              fontSize: 11,
-              letterSpacing: ".14em",
-              textTransform: "uppercase",
-              color: "#071318",
-              background: "#4ec4d4",
-              padding: "8px 16px",
-              borderRadius: 2,
-              textDecoration: "none",
-              fontWeight: 500,
-              display: "inline-block",
-              marginTop: 4,
-              width: "fit-content",
+              color: "var(--color-crust)",
+              background: "var(--color-teal)",
             }}
           >
             Embarcar
