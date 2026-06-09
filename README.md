@@ -101,5 +101,28 @@ Tailwind CSS - Estilização
 React Router DOM - Roteamento (Login, Cadastro, Dashboard, etc.)	
 
 
+## 📂 Estrutura de Pastas
+
+A estrutura do nosso projeto foi organizada da seguinte maneira:
+
+```bash
+
+   GS-FRONT-END/
+
+    └── gs-front/
+      ├── src/
+      │   ├──` assets/        `# Imagens e ícones (Github, Linkedin)
+      │   ├──` components/    `# Componentes reutilizáveis (Header, Footer, ui)
+      │   │   └──` Ocean/     `# Componentes específicos das Zonas do Oceano
+      │   ├──` layouts/       `# Layouts base da aplicação
+      │   ├──` routes/        `# Páginas da aplicação (Home, Login, Dashboard, etc.)
+      │   ├──` styles/        `# Estilos globais (`global.css`)
+      │   └──` types/         `# Definições de tipos do TypeScript
+      ├── `package.json`      `# Dependências e scripts
+      └── `vite.config.ts`    `# Configurações do Vite
+
+
+
+```
 
 
