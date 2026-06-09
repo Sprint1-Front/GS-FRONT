@@ -20,11 +20,41 @@ export default function FocoNovo() {
         nivelRisco: "Baixo",
     });
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { name, value, type } = e.target;
-        setFormData((prev) => ({
-            ...prev,
-            // Converte para número se o input for do tipo number
-            [name]: type === "number" || name === "idRegiao" || name === "idUsuario" ? Number(value) : value,
-        }));
-    };
+    const { name, value, type } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      // Converte para número se o input for do tipo number
+      [name]: type === "number" || name === "idRegiao" ||
+ name === "idUsuario" ? Number(value) : value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setErro(null);
+
+    try {
+      const response = await fetch(API_URL_FOCOS, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.erro || errorData.message 
+  `Erro ${response.status}: Falha ao criar foco de poluição.`);
+      }
+
+      // Se sucesso, redireciona de volta para a lista (dashboard)
+      navigate("/dashboard");
+    } catch (error) {
+      setErro(error instanceof Error ? error.message : "Erro desconhecido.");
+    } finally {
+      setLoading(false);
+    } 
+}
 }
