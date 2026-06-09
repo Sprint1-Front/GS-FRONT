@@ -125,4 +125,44 @@ A estrutura do nosso projeto foi organizada da seguinte maneira:
 
 ```
 
+## 👥 Autores e Créditos
+
+
+Projeto desenvolvido com dedicação por:
+
+
+-  Andre Sousa Matuda - RM: 566733 - TURMA: 1TDSPB
+
+
+
+    [GitHub](https://github.com/Andre-Matuda) | [LinkedIn](https://www.linkedin.com/in/andrematuda)
+
+
+
+
+
+- Paulo Henrique Muniz Diedrich - RM: 567618 - TURMA: 1TDSPB
+
+
+
+    [GitHub](https://github.com/paulodiedrich) | [LinkedIn](https://www.linkedin.com/in/paulo-henrique-muniz-diedrich-496aba389)
+
+
+
+- Kaliel Conceição de Aquino - RM: 567587 - TURMA: 1TDSPB
+
+
+
+    [GitHub](https://github.com/if-kaliel) | [LinkedIn](https://www.linkedin.com/in/kaliel-aquino-a034332b6)
+
+
+
+- Guilherme Oliveira Feitosa - RM: 566842 - TURMA: 1TDSPB
+
+	
+
+    [GitHub](https://github.com/GuilherOliverFeitosa) | [LinkedIn](https://www.linkedin.com/in/guilherme-oliveira-feitosa-762b56389)
+
+
+## Feito com amor para o nosso careca 💕
 
