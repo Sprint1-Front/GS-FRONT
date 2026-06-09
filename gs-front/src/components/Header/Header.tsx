@@ -5,6 +5,7 @@ const links = [
   { to: "/sobre", label: "Sobre Nós" },
   { to: "/faq", label: "FAQ" },
   { to: "/integrantes", label: "Time" },
+  { to: "/contato", label: "Contato" },
 ];
 
 export default function Header() {
