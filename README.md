@@ -164,5 +164,16 @@ Projeto desenvolvido com dedicação por:
     [GitHub](https://github.com/GuilherOliverFeitosa) | [LinkedIn](https://www.linkedin.com/in/guilherme-oliveira-feitosa-762b56389)
 
 
+
+## 📞 Contato
+
+Para dúvidas ou mais informações sobre o projeto, entre em contato com a equipe:
+
+
+
+- Email: thalassor@email.com.br
+
+- Telefone: (11) 99999-9999
+
 ## Feito com amor para o nosso careca 💕
 
