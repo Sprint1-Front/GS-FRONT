@@ -114,13 +114,13 @@ export default function Faq() {
                 key={index}
                 className={`p-8 rounded-2xl border transition-all duration-650 ${
                   isCurrentZone 
-                    ? "bg-white/10 border-white/20 shadow-[0_8px_32px_0_rgba(255,255,255,0.05)] scale-100 opacity-100" 
+                    ? "bg-surface-0 border-white/20 shadow-[0_8px_32px_0_rgba(255,255,255,0.05)] scale-100 opacity-100" 
                     : "bg-black/10 border-white/5 scale-95 opacity-40 blur-[1px]"
                 }`}
                 style={{ backdropFilter: "blur(12px)" }}
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="text-xs uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/10 text-white/70">
+                  <span className="text-xs uppercase tracking-widest px-2.5 py-1 rounded-full bg-surface-0 text-white/70">
                     {zones[item.zoneIndex].name}
                   </span>
                 </div>

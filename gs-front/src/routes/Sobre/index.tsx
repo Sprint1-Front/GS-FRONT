@@ -81,19 +81,19 @@ export default function Sobre() {
         {/* nome da zona */}
         <div className="absolute left-8 top-1/2 -translate-y-1/2 pointer-events-none">
           <h2
-            className="text-5xl font-light italic text-white/90"
+            className="text-5xl font-light italic text-text/90"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             {cur.name}
           </h2>
-          <p className="text-white/50 text-sm font-light mt-2 tracking-wide">
+          <p className="text-text/50 text-sm font-light mt-2 tracking-wide">
             {cur.desc}
           </p>
         </div>
         {/* scroll hint */}
         {progress < 0.03 && (
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-            <span className="text-white/40 text-xs tracking-widest uppercase">
+            <span className="text-text/40 text-xs tracking-widest uppercase">
               mergulhe
             </span>
             <svg width="16" height="20" viewBox="0 0 16 20" fill="none">
@@ -115,11 +115,11 @@ export default function Sobre() {
             transition: "opacity 0.5s",
           }}
         >
-          <div className="max-w-2xl bg-black/20 backdrop-blur-md p-10 rounded-2xl border border-white/10 pointer-events-auto">
-            <h1 className="text-4xl text-white mb-6 font-serif italic">
+          <div className="max-w-2xl bg-surface-0 backdrop-blur-md p-10 rounded-2xl border border-surface-1 pointer-events-auto">
+            <h1 className="text-4xl text-text mb-6 font-serif italic">
               Nossa Missão
             </h1>
-            <div className="space-y-4 text-white/80 font-light leading-relaxed">
+            <div className="space-y-4 text-text/80 font-light leading-relaxed">
               <p>
                 O Thalassor é um grupo de software dedicado a explorar as
                 profundezas do oceano. Nosso objetivo é desenvolver tecnologias

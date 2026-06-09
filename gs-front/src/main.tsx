@@ -11,6 +11,8 @@ import Faq from './routes/Faq/index.tsx';
 import Login from './routes/Login/index.tsx';
 import CadastroUsuario from './routes/CadastroUsuario/index.tsx';
 import Dashboard from './routes/Dashboard/index.tsx';
+import FocoDetalhes from './routes/Dashboard/Foco/FocoDetalhes.tsx';
+import Foco from './routes/Dashboard/Foco/Foco.tsx';
 
 
 const router = createBrowserRouter([
@@ -26,7 +28,9 @@ const router = createBrowserRouter([
       { path: "/cadastro", element: <CadastroUsuario /> },
       { path: "/login", element: <Login /> },
       { path: "/dashboard", element: <Dashboard /> },
-    ],
+      { path: "/focos/:id", element: <FocoDetalhes /> },
+      { path: "/focos", element: <Foco /> },
+      ],
   },
 ]);
 
