@@ -2,45 +2,35 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import type { tipoFocoPoluicao } from "../../types/tipoFocoPoluicao";
-import type { TipoPrevisaoIA } from "../../types/tipoPrevisaoIA";
 import type { tipoRegiao } from "../../types/tipoRegiao";
-import type { tipoOrdemColeta } from "../../types/tipoOrdemColeta";
 
 
 export default function Dashboard() {
   const navigate = useNavigate();
 
   const [focos, setFocos] = useState<tipoFocoPoluicao[]>([]);
-  const [ordens, setOrdens] = useState<tipoOrdemColeta[]>([]);
-  const [previsoes, setPrevisoes] = useState<TipoPrevisaoIA[]>([]);
   const [loading, setLoading] = useState(true);
   const [regioes, setRegioes] = useState<tipoRegiao[]>([]);
 
   const API_URL_FOCOS = "https://thalassor.onrender.com/focos";
   const API_URL_ORDENS = "https://thalassor.onrender.com/ordens";
-  const API_URL_PREVISOES = "https://thalassor.onrender.com/previsoes";
   const API_URL_REGIOES = "https://thalassor.onrender.com/regioes";
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const [resFocos, resOrdens, resPrevisoes, resRegioes] = await Promise.all([
+        const [resFocos, resOrdens, resRegioes] = await Promise.all([
           fetch(API_URL_FOCOS),
           fetch(API_URL_ORDENS),
-          fetch(API_URL_PREVISOES),
           fetch(API_URL_REGIOES)
         ]);
 
-        if (resFocos.ok && resOrdens.ok && resPrevisoes.ok && resRegioes.ok) {
+        if (resFocos.ok && resOrdens.ok && resRegioes.ok) {
           const dataFocos: tipoFocoPoluicao[] = await resFocos.json();
-          const dataOrdens: tipoOrdemColeta[] = await resOrdens.json();
-          const dataPrevisoes: TipoPrevisaoIA[] = await resPrevisoes.json();
           const dataRegioes: tipoRegiao[] = await resRegioes.json();
 
           setRegioes(dataRegioes);
           setFocos(dataFocos);
-          setOrdens(dataOrdens);
-          setPrevisoes(dataPrevisoes);
         } else {
           console.error("Erro nas leituras do sonar.");
         }
@@ -89,8 +79,6 @@ export default function Dashboard() {
   const focoAtivos = focos.filter(f => f.statusFoco === "Ativo").length;
   const ordemPendentes = focos.filter(f => f.statusFoco === "Inativo").length
   const riscoAlto = focos.filter(f => f.nivelRisco === "Alto").length;
-  const riscoMedio = focos.filter(f => f.nivelRisco === "Médio").length;
-  const riscoBaixo = focos.filter(f => f.nivelRisco === "Baixo").length;
 
   return (
     <div className="min-h-screen bg-[var(--color-base)] text-[var(--color-text)] flex flex-col md:flex-row pt-16 md:pt-0">
