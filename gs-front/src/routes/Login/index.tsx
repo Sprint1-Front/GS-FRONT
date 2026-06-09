@@ -11,7 +11,7 @@ export default function Login() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const API_URL = "http://localhost:8080/usuarios"; 
+    const API_URL = "https://thalassor.onrender.com/usuarios"; // URL do backend para autenticação 
 
   // Função acionada ao enviar o formulário
   const handleLogin = async (e: React.FormEvent) => {
