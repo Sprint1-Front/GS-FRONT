@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 type Perfil = "CAPITAO" | "ANALISTA"
@@ -79,34 +79,50 @@ export default function Register() {
     }
   }
 
+  const [isDarkTheme, setIsDarkTheme] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false
+    return (
+      localStorage.theme === 'dark' ||
+      (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    )
+  })
+
+  useEffect(() => {
+    // keep state in sync with the root `dark` class (Header toggles this)
+    const doc = document.documentElement
+    const obs = new MutationObserver(() => setIsDarkTheme(doc.classList.contains('dark')))
+    obs.observe(doc, { attributes: true, attributeFilter: ['class'] })
+    // ensure initial value matches current document
+    setIsDarkTheme(doc.classList.contains('dark'))
+    return () => obs.disconnect()
+  }, [])
+
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-[#020617] font-sans"
-      style={{ 
-        backgroundImage: "radial-gradient(circle at top, #0f172a 0%, #020617 70%)" 
-      }}
+      className="min-h-screen flex flex-col items-center justify-center px-4 py-12 bg-base font-sans"
+      style={isDarkTheme ? { backgroundImage: "radial-gradient(circle at top, #0f172a 0%, #020617 70%)" } : undefined}
     >
       {/* Cabeçalho Thematico */}
       <div className="flex flex-col items-center gap-2 mb-10">
         <span className="text-6xl drop-shadow-[0_0_15px_rgba(56,189,248,0.4)]" style={{ animation: "float 4s ease-in-out infinite" }}>🚢</span>
-        <h1 className="text-3xl md:text-4xl font-light text-[#e0f2fe] tracking-wider mt-2">
+        <h1 className="text-3xl md:text-4xl font-light text-text tracking-wider mt-2">
           N.V. Thalassor
         </h1>
-        <p className="text-[#38bdf8] text-xs font-mono uppercase tracking-[0.3em] opacity-80">
+        <p className="text-biolum text-xs font-mono uppercase tracking-[0.3em] opacity-80">
           Registro de Tripulação
         </p>
       </div>
 
       {/* Container Principal */}
-      <div className="w-full max-w-lg relative bg-[#0f172a]/80 backdrop-blur-xl border border-[#1e293b] rounded-2xl shadow-2xl overflow-hidden shadow-[#0ea5e9]/10">
+      <div className="w-full max-w-lg relative bg-base backdrop-blur-xl border border-overlay-1 rounded-2xl shadow-2xl overflow-hidden shadow-[#0ea5e9]/10">
 
         {/* Header do Card */}
-        <div className="flex items-center justify-between px-8 py-5 bg-[#0b1120] border-b border-[#1e293b]">
+        <div className="flex items-center justify-between px-8 py-5 bg-crust border-b border-[#1e293b]">
           <div>
-            <p className="text-lg font-serif italic text-[#bae6fd]">
+            <p className="text-lg font-serif italic text-sapphire">
               Ficha de Embarque
             </p>
-            <p className="text-[10px] font-mono text-[#64748b] tracking-widest mt-1">
+            <p className="text-[10px] font-mono text-subtext-0 tracking-widest mt-1">
               FORM-TCR-2026 · CONFIDENCIAL
             </p>
           </div>
@@ -136,7 +152,7 @@ export default function Register() {
                 value={nomeUsuario}
                 onChange={e => setNomeUsuario(e.target.value)}
                 placeholder="Ex: Almirante Silva"
-                className="w-full bg-transparent border-none text-[#f8fafc] placeholder-[#475569] text-base focus:ring-0 p-0"
+                className="w-full bg-transparent border-none text-[var(--color-text)] placeholder-[var(--color-subtext-1)] text-base focus:ring-0 p-0"
               />
             </Field>
 
@@ -147,7 +163,7 @@ export default function Register() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 placeholder="contato@oceano.com"
-                className="w-full bg-transparent border-none text-[#f8fafc] placeholder-[#475569] text-base focus:ring-0 p-0"
+                className="w-full bg-transparent border-none text-[var(--color-text)] placeholder-[var(--color-subtext-1)] text-base focus:ring-0 p-0"
               />
             </Field>
 
@@ -159,7 +175,7 @@ export default function Register() {
                   value={senha}
                   onChange={e => setSenha(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full bg-transparent border-none text-[#f8fafc] placeholder-[#475569] text-base focus:ring-0 p-0"
+                  className="w-full bg-transparent border-none text-[var(--color-text)] placeholder-[var(--color-subtext-1)] text-base focus:ring-0 p-0"
                 />
               </Field>
               <Field label="Confirmar Senha">
@@ -169,7 +185,7 @@ export default function Register() {
                   value={senha2}
                   onChange={e => setSenha2(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full bg-transparent border-none text-[#f8fafc] placeholder-[#475569] text-base focus:ring-0 p-0"
+                  className="w-full bg-transparent border-none text-[var(--color-text)] placeholder-[var(--color-subtext-1)] text-base focus:ring-0 p-0"
                 />
               </Field>
             </div>
@@ -247,7 +263,7 @@ export default function Register() {
 
         {/* Overlay de Sucesso */}
         {success && (
-          <div className="absolute inset-0 bg-[#020617]/95 backdrop-blur-sm flex flex-col items-center justify-center gap-4 z-10 animate-in fade-in duration-500">
+          <div className={`absolute inset-0 ${isDarkTheme ? 'bg-[#020617]/95' : 'bg-[var(--color-base)]/95'} backdrop-blur-sm flex flex-col items-center justify-center gap-4 z-10 animate-in fade-in duration-500`}>
             <span className="text-7xl drop-shadow-[0_0_20px_rgba(56,189,248,0.6)]" style={{ animation: "float 3s ease-in-out infinite" }}>⚓</span>
             <p className="font-serif text-3xl italic text-[#bae6fd]">
               Bem-vindo a bordo
