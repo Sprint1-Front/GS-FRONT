@@ -16,7 +16,7 @@ Para acessar, testar e conhecer mais sobre a solução, utilize:
 
 - **🌐 Deploy (Back-end) — Render:** https://thalassor.onrender.com/
 - **🌐 Deploy (Front-end) — Vercel:** https://thalassor.vercel.app
-- **🎥 Pitch/Vídeo de Apresentação (YouTube):** https://youtube.com/link-do-video
+- **🎥 Pitch/Vídeo de Apresentação (YouTube):** https://www.youtube.com/watch?v=LjIb9EUdXhs
 - **💻 Repositório Front-end (GitHub):** https://github.com/Sprint1-Front/GS-FRONT.git
 - **💻 Repositório Back-end (GitHub):** https://github.com/If-Kaliel/thalassor.git
 
