@@ -135,7 +135,7 @@ export default function Fish({ progress }: { progress: number }) {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 w-full h-full pointer-events-none"
-      style={{ zIndex: 6 }}
+      style={{ zIndex: 1 }}
     />
   );
 }
