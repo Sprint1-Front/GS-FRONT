@@ -13,7 +13,8 @@ import CadastroUsuario from './routes/CadastroUsuario/index.tsx';
 import Dashboard from './routes/Dashboard/index.tsx';
 import FocoDetalhes from './routes/Dashboard/Foco/FocoDetalhes.tsx';
 import Foco from './routes/Dashboard/Foco/Foco.tsx';
-
+import FocoNovo from './routes/Dashboard/Foco/FocoNovo.tsx';
+import Contato from './routes/Contato/index.tsx';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,9 @@ const router = createBrowserRouter([
       { path: "/dashboard", element: <Dashboard /> },
       { path: "/focos/:id", element: <FocoDetalhes /> },
       { path: "/focos", element: <Foco /> },
+      { path: "/focos/novo", element: <FocoNovo /> },
+      { path: "/contato", element: <Contato /> },
+    
       ],
   },
 ]);

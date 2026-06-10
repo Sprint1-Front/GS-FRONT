@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import type { tipoFocoPoluicao } from "../../../types/tipoFocoPoluicao";
 
@@ -170,27 +170,17 @@ export default function FocoDetalhes() {
               </h2>
               <div className="flex-1 bg-mantle rounded-xl border border-crust flex items-center justify-center overflow-hidden min-h-[300px]">
                 {(() => {
-                  // Function to calculate bounding box based on lat/lon
-                  const lat = parseFloat(foco.latitude);
-                  const lon = parseFloat(foco.longitude);
-                  
-                  // Create a bounding box roughly 0.4 degrees around the point
-                  // Format: minLon, minLat, maxLon, maxLat (or vice-versa depending on the specific API coordinate ordering, usually minX,minY,maxX,maxY)
-                  // The provided example uses: -23.968,-45.555,-23.568,-45.155
-                  // Wait, the provided URL parameters:
-                  // TIME=2026-05-31
-                  // COORDINATES=lat1,lon1,lat2,lon2 or lat_min,lon_min,lat_max,lon_max.
-                  // Looking at the example: -23.968000,-45.555000,-23.568000,-45.155000 (Lat: -23.9, Lon: -45.5 to Lat: -23.5, Lon: -45.1) - This is lat,lon,lat,lon format.
-                  // Actually the standard is often bottom-left, top-right (minLat, minLon, maxLat, maxLon).
-                  // Let's generate a box around the point.
+                  const lat = Number(foco.latitude);
+                  const lon = Number(foco.longitude);
+
                   const offset = 0.2;
                   const minLat = (lat - offset).toFixed(6);
                   const minLon = (lon - offset).toFixed(6);
                   const maxLat = (lat + offset).toFixed(6);
                   const maxLon = (lon + offset).toFixed(6);
 
-                  // Try to use the detect date, fallback to a recent date if not available or invalid
-                  let dateStr = "2024-05-31"; // Default safe date for MODIS Terra (needs past date usually, but we'll use a static one for now or the incident date)
+                  
+                  let dateStr = "2024-05-31"; 
                   if (foco.dataDeteccao) {
                       // Extract YYYY-MM-DD
                       const match = foco.dataDeteccao.match(/(\d{4}-\d{2}-\d{2})/);

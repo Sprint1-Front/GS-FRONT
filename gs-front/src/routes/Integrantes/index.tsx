@@ -4,6 +4,7 @@ import Midwater from "../../components/Ocean/Midwater";
 import AbyssZone from "../../components/Ocean/AbyssZone";
 import Floor from "../../components/Ocean/Floor";
 import DepthIndicator from "../../components/Ocean/DepthIndicator";
+import Fish from "../../components/Ocean/Fish";
 
 import githubIcon from "../../assets/icons/github.svg";
 import linkedinIcon from "../../assets/icons/linkedin.svg";
@@ -61,7 +62,7 @@ const integrantes = [
   },
   {
     name: "Paulo Henrique Muniz Diedrich",
-    github: "paulodiedrich",
+    github: "DiedrichPaulo",
     turma: "1TDSPB",
     rm: "RM567618",
     linkedin: "paulo-henrique-muniz-diedrich-496aba389",
@@ -131,6 +132,7 @@ export default function Integrantes() {
         <Midwater progress={progress} />
         <AbyssZone progress={progress} />
         <Floor progress={progress} />
+        <Fish progress={progress} />
 
         <DepthIndicator progress={progress} zone={cur} />
       </div>
